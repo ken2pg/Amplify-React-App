@@ -6,11 +6,13 @@ export type CreateTodoInput = {
   id?: string | null,
   name: string,
   description?: string | null,
+  completed?: boolean | null,
 };
 
 export type ModelTodoConditionInput = {
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  completed?: ModelBooleanInput | null,
   and?: Array< ModelTodoConditionInput | null > | null,
   or?: Array< ModelTodoConditionInput | null > | null,
   not?: ModelTodoConditionInput | null,
@@ -56,10 +58,18 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
 export type UpdateTodoInput = {
   id: string,
   name?: string | null,
   description?: string | null,
+  completed?: boolean | null,
 };
 
 export type DeleteTodoInput = {
@@ -70,6 +80,7 @@ export type ModelTodoFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  completed?: ModelBooleanInput | null,
   and?: Array< ModelTodoFilterInput | null > | null,
   or?: Array< ModelTodoFilterInput | null > | null,
   not?: ModelTodoFilterInput | null,
@@ -102,6 +113,7 @@ export type CreateTodoMutation = {
     id: string,
     name: string,
     description: string | null,
+    completed: boolean | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -118,6 +130,7 @@ export type UpdateTodoMutation = {
     id: string,
     name: string,
     description: string | null,
+    completed: boolean | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -134,6 +147,7 @@ export type DeleteTodoMutation = {
     id: string,
     name: string,
     description: string | null,
+    completed: boolean | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -149,6 +163,7 @@ export type GetTodoQuery = {
     id: string,
     name: string,
     description: string | null,
+    completed: boolean | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -168,6 +183,7 @@ export type ListTodosQuery = {
       id: string,
       name: string,
       description: string | null,
+      completed: boolean | null,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
@@ -181,6 +197,7 @@ export type OnCreateTodoSubscription = {
     id: string,
     name: string,
     description: string | null,
+    completed: boolean | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -192,6 +209,7 @@ export type OnUpdateTodoSubscription = {
     id: string,
     name: string,
     description: string | null,
+    completed: boolean | null,
     createdAt: string,
     updatedAt: string,
   } | null,
@@ -203,6 +221,7 @@ export type OnDeleteTodoSubscription = {
     id: string,
     name: string,
     description: string | null,
+    completed: boolean | null,
     createdAt: string,
     updatedAt: string,
   } | null,
